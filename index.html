@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.min.css">
+    <title>UATWIN</title>
+    <link rel="icon" href="img/favicon.ico" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-1247850-8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-12478530-8');
+</script>
+</head>
+
+<body>
+<div class="main-wrapper-1">
+    <div class="first-screen">
+        <div class="container">
+            <div class="lang-container">
+                <a href="https://g.btc36.com/" class="en-lang-switch">
+                    <img src="img/icons/en-flag.jpg">
+                </a>
+                <a href="index.html#" class="ru-lang-switch">
+                    <img src="img/icons/ru-flag.jpg">
+                </a>
+            </div>
+            <div class="first-screen-container">
+                <div class="left">
+                    <div class="title">UAT WIN</div>
+                    
+                </div>
+                <div class="right">
+                    <div class="jackpot">
+                        <div>大奖</div>
+                        <div id="jackpot">0</div>
+                        <div>UAT</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-2">
+        <div class="container">
+            <div class="section-2-container">
+                <div class="left">
+                    <div class="ticket">
+                        <div class="title">彩票价格</div>
+                        <div class="sub-title">UAT</div>
+                        <form action="index.html">
+                            <div id="buy-ticket-wrapper">
+                                <input id="buy-ticket" type="text" value="5" name="buy-ticket">
+                            </div>
+                            <div class="btn-container">
+                                <input type="submit" class="btn-buy-ticket" value="购买彩票" id="buyTicket">
+                            </div>
+                        </form>
+                        
+                        <div class="input-container"></div>
+                        <div class="description"><a href="etherwin-rules.html" target="_blank" class="link">• UATWIN规则 •</a></div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="tabs-wrapper">
+                        <div class="tabs-header">
+                            <div class="tab1 active">开奖信息</div>
+                            <div class="tab2">我的彩票</div>
+                            <div class="tab3">推广奖励</div>
+                            <div class="tab4">玩法介绍?</div>
+                        </div>
+                        <div class="tabs-content">
+                            <div class="content1 active">
+                                <p id="log1" class="log">等待交易确认.....</p>
+                                <p id="log2" class="log">交易成功。开奖区块: <a href="index.html#" target="_blank" id="resLink" class="link"></a> </p>
+                                <p id="log3" class="log">开奖的区块哈希: <span id="resHash"></span></p>
+                                <p id="fail" class="log">很遗憾你没有赢得奖金。再试一次!</p>
+                                <div id="won-area" class="log">
+                                    <p><strong>恭喜!你赢得了:</strong> <span id="winval"></span></p>
+                                    <p id="waitPrize">请等待<span id="blocksLeft">6</span>个区块然后点击获得奖金。</p>
+                                    <a href="index.html#" class="link" id="getPrize">获得奖金</a>
+                                </div>
+                            </div>
+                            <div class="content2">
+                                <div class="table-wrapper">
+                                    <table id="myTickets">
+                                        <tr>
+                                            <th>交易</th>
+                                            <th>开奖区块</th>
+                                            <th>彩票价值</th>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="content3">
+                                <div class="header">推广奖励</div>
+                                <p>你的推广链接</p>
+                                <div class="link" id="ownRefLink">https://g.btc36.com?your_ethereum_address</div>
+                                <div class="withdraw">
+                                    <div class="left">你的推广奖励 - </span> UAT</div>
+                                    <div class="right">
+                                    
+                                    </div>
+                                </div>
+                                <p>用户通过你的推广链接参与UATWIN将终身奖励给你30%的总花费。</p>
+                            </div>
+                            <div class="content4">
+                                <div class="tab-content-wrapper">
+                                    <div class="header">玩法介绍</div>
+                                    <p>1. 安装<span>MetaMask</span>钱包或手机钱包。</p>
+                                    <p>2. 选择彩票价格，然后单击“购买彩票”（5-50 UAT）。</p>
+                                    <p>3. 在钱包中确认交易。</p>
+                                    <p>4. 等待交易确认和开奖区块哈希值。</p>
+                                    <p>5. 如果你赢了，请等待6个区块确认然后点击“获得奖金”（“我的彩票”选项框）。</p>
+                                    <p>6. 现在可以开始新一局游戏，再次购买彩票 =)</p>
+                                    <p>是否赢得奖金由开奖区块的最后一位确定。</p>
+                                    <table class="table-how-to-paly">
+                                        <tr>
+                                            <td>哈希的最后一位</td>
+                                            <td>0 - 9</td>
+                                            <td>99</td>
+                                            <td>a</td>
+                                            <td>b</td>
+                                            <td>c</td>
+                                            <td>d</td>
+                                            <td>e</td>
+                                            <td>f</td>
+                                        </tr>
+                                        <tr>
+                                            <td>奖金</td>
+                                            <td>0</td>
+                                            <td>JP</td>
+                                            <td>x1.5</td>
+                                            <td>x1.5</td>
+                                            <td>x1.5</td>
+                                            <td>x2</td>
+                                            <td>x2</td>
+                                            <td>x3</td>
+                                        </tr>
+                                    </table>
+                                    <p class="last">* 奖金等于购买彩票的成本X倍数</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-3">
+        <div class="container">
+            <div class="probability-container">
+                <div class="probability-row first-row">
+                    <div>概率</div>
+                    <div>18,75%</div>
+                    <div>12,5%</div>
+                    <div>6,25%</div>
+                    <div>0,39%</div>
+                    <div>概率</div>
+                </div>
+                <div class="probability-row last-row">
+                    <div>奖金</div>
+                    <div>Х1,5</div>
+                    <div>Х2</div>
+                    <div>Х3</div>
+                    <div>超级大奖</div>
+                    <div>奖金</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-4">
+        <div class="container">
+            <div class="last-table-wrapper">
+                <span id="transactions">
+
+                </span>
+
+            </div>
+        </div>
+    </div>
+    <div class="section-5">
+        <div class="container">
+            <div class="copyright">版权所有 © 2023 UATWIN</div>
+        </div>
+    </div>
+    <script>
+var web3 = new Web3(window.web3.currentProvider);
+
+var abi=[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"name": "tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "approve",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "tokens",
+				"type": "uint256"
+			},
+			{
+				"name": "referral",
+				"type": "address"
+			}
+		],
+		"name": "freeze",
+		"outputs": [
+			{
+				"name": "success",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_burning",
+				"type": "uint256"
+			},
+			{
+				"name": "_dailyminingpercent",
+				"type": "uint256"
+			},
+			{
+				"name": "_mint",
+				"type": "uint256"
+			},
+			{
+				"name": "_burn",
+				"type": "uint256"
+			},
+			{
+				"name": "_refrate",
+				"type": "uint256"
+			}
+		],
+		"name": "settings",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "one",
+				"type": "address"
+			},
+			{
+				"name": "two",
+				"type": "address"
+			}
+		],
+		"name": "setwhitelistaddr",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"name": "tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "transfer",
+		"outputs": [
+			{
+				"name": "success",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"name": "tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "transferFrom",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "referral",
+				"type": "address"
+			}
+		],
+		"name": "unfreeze",
+		"outputs": [
+			{
+				"name": "success",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "referral",
+				"type": "address"
+			}
+		],
+		"name": "withdraw",
+		"outputs": [
+			{
+				"name": "success",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "tokenOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "spender",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "tokens",
+				"type": "uint256"
+			}
+		],
+		"name": "Approval",
+		"type": "event"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "tokenOwner",
+				"type": "address"
+			},
+			{
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "allowance",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "tokenOwner",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"name": "balance",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "balances",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "burningrate",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "checkinterests",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "circulatingSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "decimals",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "earningrate",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "frozen",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "frozenSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "kcma",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "myBalance",
+		"outputs": [
+			{
+				"name": "balanceOf",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "myfrozentokens",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "referralrate",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "whitelist",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "whitelist2",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+];
+
+
+        </script>
+</div>
+</body>
+
+
+<script src="js/jquery-3.3.1.min.js?v=1"></script>
+<script src="js/jquery.bootstrap-touchspin.js?v=1"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js?v=1"></script>
+<script src="js/ethers-v4.min.js" charset="utf-8" type="text/javascript"></script>
+<script src="js/main.js?v=1"></script>
+</html>
